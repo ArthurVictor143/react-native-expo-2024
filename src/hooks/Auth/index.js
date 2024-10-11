@@ -1,8 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 
-// Criação do contexto e constantes de roles
+
 const AuthContext = createContext({});
-export const ROLE = {
+export const Role = {
   SUPER: "SUPER",
   ADM: "ADM",
   USER: "USER",
@@ -10,7 +10,7 @@ export const ROLE = {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState({
-    autenticated: null,
+    autenticated: false,
     user: null,
     role: null,
   });
@@ -20,19 +20,19 @@ export function AuthProvider({ children }) {
       setUser({
         autenticated: true,
         user: { id: 1, name: "Super Usuario", email },
-        role: ROLE.SUPER,
+        role: Role.SUPER,
       });
     } else if (email === 'adm@gmail.com' && password === 'ADM123!') {
       setUser({
         autenticated: true,
         user: { id: 2, name: "Administrador", email },
-        role: ROLE.ADM,
+        role: Role.ADM,
       });
     } else if (email === 'user@gmail.com' && password === 'User123!') {
       setUser({
         autenticated: true,
         user: { id: 3, name: "Usuario Comun", email },
-        role: ROLE.USER,
+        role: Role.USER,
       });
     } else {
       setUser({
