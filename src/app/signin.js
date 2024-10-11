@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { BackHandler, Button, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../hooks/Auth";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
@@ -31,11 +31,9 @@ export default function Page() {
           onPress={() => signIn({ email: "user@gmail.com", password: "User123!" })}
         />
 
-        <Button
-          title="SignOut"
-          onPress={() => signOut()}
-        />
-
+       
+   <Button title="Sobre" onPress={()=>router.push("/about")}/>
+       <Button title="Sair do aplicativo" onPress={()=>BackHandler.exitApp()}/>
         <StatusBar style="auto" />
       </View>
     </View>
@@ -47,7 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff", // Corrigido para '#fff'
     alignItems: "center",
-    padding: 24,
+    justifyContent:"center",
+    gap:15,
+    
   },
   main: {
     flex: 1,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "light",
   },
   subtitle: {
